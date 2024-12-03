@@ -15,11 +15,21 @@ d2 = '''
 </html>
 '''
 
+filin = open("dir_html.txt", 'r')
+datos = filin.readlines()
+filin.close()
+
 fil = open("html_ejemplos.html", 'w')
 
 fil.write(d1)
 fil.write(h1)
-fil.write(r1)
+
+for ss in datos:
+  ss = ss.replace('\n','')
+  print(ss)
+  rr = ' <p><a href="http://192.168.56.10/HTML_Examples/' + ss + '"> ' + ss + ' </a></p>\n'
+  fil.write(rr)
+
 fil.write(d2)
 
 fil.close()
