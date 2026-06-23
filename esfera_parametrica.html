@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superficie Cerrada 3D en JavaScript</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            font-family: Arial, sans-serif;
+        }
+        #info {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="info">Superficie Cerrada 3D (Esfera Matemática) usando Three.js</div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        // 1. Configuración de la Escena, Cámara y Renderizador
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 15;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Controles de órbita (Mouse)
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+
+        // 2. Iluminación (Crucial para ver el volumen y la superficie cerrada)
+        const ambientLight = new THREE.AmbientLight(0x333333);
+        scene.add(ambientLight);
+
+        const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight1.position.set(5, 10, 7);
+        scene.add(dirLight1);
+
+        const dirLight2 = new THREE.DirectionalLight(0x0088ff, 0.5);
+        dirLight2.position.set(-5, -10, -7);
+        scene.add(dirLight2);
+
+        // 3. Generación del Conjunto de Puntos 3D para una Superficie Cerrada
+        const uSegments = 30;
+        const vSegments = 30;
+        const radius = 5;
+
+        // Usamos ParametricGeometry para "coser" los puntos en una superficie continua
+        // (Nota: En versiones modernas de Three.js creamos los buffers manualmente para máximo control)
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+        const indices = [];
+
+        // Generar los puntos (vértices) basándonos en coordenadas esféricas
+        for (let i = 0; i <= uSegments; i++) {
+            const u = (i / uSegments) * Math.PI; // de 0 a PI
+            for (let j = 0; j <= vSegments; j++) {
+                const v = (j / vSegments) * 2 * Math.PI; // de 0 a 2PI
+
+                // Ecuaciones paramétricas de la esfera:
+                const x = radius * Math.sin(u) * Math.cos(v);
+                const y = radius * Math.cos(u);
+                const z = radius * Math.sin(u) * Math.sin(v);
+
+                vertices.push(x, y, z);
+            }
+        }
+
+        // Generar las caras (índices) para cerrar la superficie uniendo los puntos
+        for (let i = 0; i < uSegments; i++) {
+            for (let j = 0; j < vSegments; j++) {
+                const p1 = i * (vSegments + 1) + j;
+                const p2 = p1 + 1;
+                const p3 = (i + 1) * (vSegments + 1) + j;
+                const p4 = p3 + 1;
+
+                // Creamos dos triángulos por cada cuadrante de puntos para cerrar la malla
+                indices.push(p1, p3, p2);
+                indices.push(p2, p3, p4);
+            }
+        }
+
+        // Asignar los puntos y las caras a la geometría
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        geometry.setIndex(indices);
+        geometry.computeVertexNormals(); // Necesario para que la luz rebote correctamente
+
+        // 4. Material y Malla (Mesh)
+        // Usamos wireframe: false para verla sólida, o true para ver la estructura de red
+        const material = new THREE.MeshStandardMaterial({
+            color: 0x00ffcc,
+            roughness: 0.4,
+            metalness: 0.2,
+            side: THREE.DoubleSide, // Renderiza ambos lados de la superficie
+            wireframe: false 
+        });
+
+        const superficieCerrada = new THREE.Mesh(geometry, material);
+        scene.add(superficieCerrada);
+
+        // 5. Animación y Renderizado Continuo
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotación suave automática
+            superficieCerrada.rotation.y += 0.005;
+            superficieCerrada.rotation.x += 0.002;
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        // Ajustar al cambiar el tamaño de la pantalla
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    </script>
+</body>
+</html>
+
