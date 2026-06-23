@@ -1,0 +1,29 @@
+El valor module en HTML se utiliza en el atributo type de la etiqueta <script>. Indica al navegador que el archivo JavaScript debe tratarse como un módulo de ECMAScript (ESM) en lugar de un script tradicional
+
+Esto permite estructurar tu código en archivos más pequeños e independientes usando import y export.
+
+Características clave de <script type="module">
+
+* Ámbito local (Scope): Las variables y funciones declaradas dentro de un módulo son privadas y no contaminan el ámbito global, evitando conflictos.
+
+* Carga diferida (Defer): Los módulos se descargan en segundo plano sin bloquear el renderizado de la página y se ejecutan justo cuando el documento HTML ha terminado de cargarse.
+
+* Modo estricto: El código dentro del módulo se ejecuta automáticamente en "modo estricto" (strict mode), lo que ayuda a prevenir errores silenciosos de JavaScript.
+
+* Soporte CORS: Al cargar scripts desde otros servidores (dominios externos), es obligatorio que el servidor remoto configure las cabeceras CORS.
+
+Ejemplo de uso
+
+<script type="module">
+  // Importamos una función desde otro archivo
+  import { saludar } from './utilidades.js';
+  
+  saludar('Usuario');
+</script>
+
+
+Puedes consultar más detalles técnicos y ejemplos de compatibilidad en la guía de Módulos JavaScript de MDN Web Docs.
+
+¿Estás intentando conectar varios archivos JavaScript o estás buscando información sobre compatibilidad con navegadores antiguos (usando el atributo nomodule)?
+
+

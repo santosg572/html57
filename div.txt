@@ -1,0 +1,24 @@
+El elemento <div> en HTML es un contenedor genérico en bloque que se usa para agrupar otros elementos y estructurar el diseño de una página web. Por sí solo no cambia la apariencia del sitio, pero sirve para aplicar estilos con CSS o crear interactividad con JavaScript
+
+Características clave:
+
+* No tiene significado semántico: No aporta información sobre el tipo de contenido que contiene (a diferencia de etiquetas como <article> o <nav>).
+
+* Es un elemento de bloque: Por defecto, ocupa todo el ancho disponible y comienza en una nueva línea.
+
+* Agrupación lógica: Se utiliza frecuentemente para envolver bloques de código y moverlos o estilizarlos juntos.
+
+Ejemplo práctico:
+
+Se usa mucho para crear barras laterales, contenedores de tarjetas o secciones de diseño mediante clases o IDs:
+
+<div class="contenedor-principal">
+    <h2>Título de la sección</h2>
+    <p>Este es un párrafo de ejemplo agrupado dentro de un div.</p>
+</div>
+
+Puedes aprender más sobre su implementación técnica consultando la documentación oficial de MDN Web Docs o el artículo sobre elementos de W3Schools.
+
+¿Estás aprendiendo a estructurar una página web o necesitas ayuda para organizar los divs de algún proyecto en específico que estés creando?
+
+

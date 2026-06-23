@@ -1,0 +1,21 @@
+El parámetro "#info" en una URL web no es una instrucción propia de HTML, sino un identificador de fragmento o ancla. Le indica al navegador que debe desplazarse automáticamente hacia una sección específica de la página web que tiene un elemento asignado con el atributo id="info".
+
+Se utiliza principalmente de dos formas:
+
+* En enlaces (<a>): Para dirigir al usuario a una parte concreta del documento.
+
+<a href="#info">Ir a la sección de información</a>
+...
+<div id="info">
+    <h2>Información importante</h2>
+</div>
+
+* En CSS y JavaScript: Sirve como un selector (el símbolo # indica "identificador único") para aplicar estilos o manipular el elemento con JavaScript.
+
+// Ejemplo en JavaScript para ocultar el elemento
+document.getElementById("info").style.display = "none";
+Usa el código con precaución.
+
+¿Estás intentando crear un enlace interno, aplicar estilos CSS, o gestionar un evento con JavaScript? Si me compartes el fragmento de código en el que estás trabajando, te puedo guiar sobre cómo integrarlo correctamente.
+
+

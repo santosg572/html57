@@ -1,0 +1,36 @@
+En HTML, una etiqueta <meta> (no es un parámetro, sino un elemento) sirve para proporcionar metadatos sobre tu página web. Esta información invisible para el usuario es leída por navegadores y motores de búsqueda para saber cómo mostrar, indexar y codificar el sitio.
+
+Se colocan siempre dentro de la sección <head> de tu documento.
+
+Tipos principales y ejemplos
+
+Codificación de caracteres: Define cómo se leen los textos (tildes, caracteres especiales).
+
+html
+
+<meta charset="UTF-8">
+
+
+Adaptación móvil (Viewport): Obligatorio para que tu web se vea correctamente en celulares y tabletas.
+
+html
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+Descripción de la página: Un resumen que los buscadores (como Google) muestran en sus páginas de resultados (SERPs).
+
+<meta name="description" content="Aprende sobre desarrollo web y programación.">
+
+
+Instrucciones para robots: Le indica a los motores de búsqueda si deben indexar o no la página.
+
+<meta name="robots" content="index, follow">
+
+Para profundizar más en su sintaxis exacta, puedes consultar la documentación oficial de MDN Web Docs o las directrices de Google Developers sobre el rastreo.
+
+¿Estás intentando optimizar tu web para SEO o necesitas configurar la vista para dispositivos móviles?
+
+Si me dices qué objetivo tienes, te puedo dar las etiquetas exactas que necesitas agregar.
+
+

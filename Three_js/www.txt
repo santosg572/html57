@@ -1,0 +1,8 @@
+https://threejs.org/manual/
+https://threejs.org/docs/
+https://threejs.org/
+https://threejs.org/docs/index.html?q=text
+https://web.dev/articles/three-intro?hl=es-419
+https://jsmastery.com/blogs/the-ultimate-guide-to-mastering-three-js-for-3d-development
+
+

@@ -1,0 +1,25 @@
+El parámetro (o más correctamente, etiqueta) <body> en HTML representa el cuerpo del documento. En él se encierra todo el contenido visible de una página web, como textos, imágenes, videos, formularios, tablas y botones.
+
+Es una etiqueta fundamental con las siguientes características:
+
+* Contenido visible: Todo lo que escribas dentro de <body> y </body> aparecerá en la pantalla del usuario.
+
+* Ubicación exacta: Se coloca inmediatamente después de la etiqueta <head> y dentro de la etiqueta principal <html>.
+
+* Atributos: Aunque ya no se recomienda su uso (ahora se prefiere CSS para el diseño), históricamente admitía parámetros estéticos como bgcolor (color de fondo) o background (imagen de fondo).
+
+* Estructura única: Solo puede haber un único elemento <body> en cada página web.
+
+<html>
+  <head>
+    <title>Mi página web</title>
+  </head>
+  <body>
+    <h1>¡Hola! Este es el encabezado</h1>
+    <p>Este texto se mostrará en el navegador.</p>
+  </body>
+</html>
+
+¿Estás aprendiendo a crear tu primera página web o necesitas saber cómo aplicar estilos y colores a tu <body> mediante CSS?
+
+

@@ -1,0 +1,28 @@
+En HTML, el parámetro o atributo style se utiliza para aplicar reglas de estilo CSS en línea directamente a un elemento específico. Permite modificar la apariencia visual (colores, fuentes, márgenes, tamaños) de forma rápida sin necesidad de crear un archivo de estilos separado.
+
+Sintaxis
+
+La estructura básica consiste en abrir el atributo con comillas, seguido de la propiedad, dos puntos, el valor y punto y coma. Puedes incluir múltiples reglas dentro de las mismas comillas:
+
+<etiqueta style="propiedad1: valor1; propiedad2: valor2;">
+
+
+Ejemplo práctico
+
+En este ejemplo, se modifica el color de un título y el tamaño de la fuente de un párrafo:
+
+<h1 style="color: blue; text-align: center;">¡Hola Mundo!</h1>
+<p style="font-size: 20px; color: gray;">Este es un párrafo estilizado.</p>
+
+
+¿Cuándo usarlo y cuándo evitarlo?
+
+Existe un amplio consenso entre la comunidad de desarrolladores en plataformas como Quora sobre las mejores prácticas para su uso:
+
+* Ideal para: Pruebas rápidas, prototipos, correcciones momentáneas o correos electrónicos (donde a veces no funcionan los archivos externos).
+
+* No recomendado para: Sitios web grandes o complejos. Dificulta el mantenimiento y ensucia el código HTML. En su lugar, es mejor usar clases y hojas de estilo externas.
+
+¿Te gustaría aprender a vincular un archivo CSS externo a tu proyecto para organizar mejor tus estilos, o prefieres que te ayude con alguna propiedad específica (como flexbox, animaciones o colores)?
+
+

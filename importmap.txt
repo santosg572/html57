@@ -1,0 +1,36 @@
+El parámetro o etiqueta type="importmap" en HTML es una función que permite gestionar y mapear las URLs de los módulos de JavaScript (ES Modules) directamente en el navegador.
+
+En lugar de escribir URLs largas y repetitivas, el mapa de importación te deja asignar un nombre lógico a tus librerías.
+
+¿Cómo funciona?
+
+Se declara dentro de una etiqueta <script> y contiene un objeto JSON con las rutas:
+
+<script type="importmap">
+  {
+    "imports": {
+      "lodash": "https://cdn.jsdelivr.net/npm/lodash-es@4.17.21/lodash.min.js",
+      "mi-modulo/": "/js/modulos-locales/"
+    }
+  }
+</script>
+
+Una vez definido, puedes importar tus scripts usando simplemente el nombre asignado, de forma similar a como se hace en Node.js:
+
+<script type="module">
+  import _ from 'lodash';
+  // El navegador sabe automáticamente qué URL cargar
+</script>
+
+
+Sus mayores ventajas
+
+* Adiós a los empaquetadores complejos: Te libera de la necesidad de herramientas de compilación pesadas (como Webpack o Vite) para proyectos sencillos o flujos de trabajo nativos.
+
+* Mantenimiento centralizado: Si necesitas actualizar la versión de una librería o cambiar su CDN, solo cambias la URL en el importmap y no en cada archivo de código que la utilice.
+
+* Estandarización: Es una característica nativa soportada por los navegadores modernos, estandarizada por el WHATWG.
+
+¿Estás intentando configurar tu propio entorno de desarrollo nativo, o tienes dudas sobre qué librerías son compatibles con este sistema? Cuéntame más sobre tu proyecto para recomendarte la mejor estrategia.
+
+
